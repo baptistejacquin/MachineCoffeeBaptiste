@@ -1,0 +1,97 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/test', function () {
+    return view('Accueil');
+})->middleware('auth');
+// Ingredient
+Route::get('ingredients','ControllerIngredients@bdd')->middleware('auth');
+Route::get('ingredients','ControllerIngredients@bdd')->middleware('auth');
+
+Route::post('ingredients','ControllerIngredients@store')->name('PostIng')->middleware('auth');
+
+Route::get('ingredients/{id}', 'ControllerIngredients@edit')->name('ingredientsEdit')->middleware('auth');
+
+Route::get('modifIngredient/{id}','ControllerIngredients@mod')->name('ingredientModif')->middleware('auth');
+
+Route::post('modifIngredient/{id}','ControllerIngredients@modif')->name('ingredientModification')->middleware('auth');
+
+Route::delete('suppIngredient/{id}', 'ControllerIngredients@supp')->name('IngredientSupp')->middleware('auth');
+
+Route::get('ingredientsZA','ControllerIngredients@orderZA')->middleware('auth');
+
+Route::get('IngPrixUp','ControllerIngredients@orderUp')->middleware('auth');
+
+Route::get('IngPrixDown','ControllerIngredients@orderDown')->middleware('auth');
+
+Route::get('FormAjout','ControllerIngredients@ajout')->name('FormAjout')->middleware('auth');
+
+
+// Boissons
+
+Route::get('boisson/{id}', 'ControllerBoisson@edit')->name('boissonEdit')->middleware('auth');
+
+Route::delete('supp/{id}', 'ControllerBoisson@supp')->name('boissonSupp')->middleware('auth');
+
+Route::get('boisson','ControllerBoisson@bdd')->name('boissonBdd')->middleware('auth');
+
+Route::get('FormAjourboisson','ControllerBoisson@ajout')->name('formAjoutBoisson')->middleware('auth');
+
+Route::get('boissonZA','ControllerBoisson@orderZA')->middleware('auth');
+
+Route::get('prixUp','ControllerBoisson@orderUp')->middleware('auth');
+
+Route::get('prixDown','ControllerBoisson@orderDown')->middleware('auth');
+
+Route::get('modif/{id}','ControllerBoisson@mod')->name('boissonModif')->middleware('auth');
+
+Route::post('modif/{id}','ControllerBoisson@modif')->name('boissonModification')->middleware('auth');
+
+Route::post('boissonRecette','ControllerBoisson@store')->middleware('auth');
+
+//Recettes
+
+Route::get('recette', 'ControllerRecette@bdd')->middleware('auth');
+
+Route::get('recette/{id}', 'ControllerRecette@edit')->name('recetteEdit')->middleware('auth');
+
+Route::get('formRecetteAjout','ControllerRecette@formajout')->name('formRecetteAjout')->middleware('auth');
+
+Route::delete('suppRecette/{id}', 'ControllerRecette@supp')->name('RecetteSupp')->middleware('auth');
+
+Route::post('ajoutRecette', 'ControllerRecette@store')->name('AjoutRecette')->middleware('auth');
+
+Route::get('ModifRecette/{id}', 'ControllerRecette@mod')->name('ModifAvantFormRecette')->middleware('auth');
+
+Route::post('ModifPost/{id}', 'ControllerRecette@modif')->name('ModifApresFormRecette')->middleware('auth');
+
+Route::delete('suppLigne/{id}', 'ControllerRecette@suppligne')->name('suppLigne')->middleware('auth');
+
+
+
+
+Route::get('monnaie', 'ControllerMonnaie@mon')->middleware('auth');
+
+
+
+Route::get('vente', 'ControllerVente@index')->middleware('auth');
+
+
+
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+
+//Les routes pour la ressource Front
+Route::resource('fronts', 'FrontController') ;

@@ -1,0 +1,72 @@
+#fond2 {
+	background-image: url('Image/Vue2-assets/fond_vue2.png');
+	height: 1024px;
+	width: 768px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.affichage {
+	color: white;
+	font-size: 20px;
+	opacity: 0.7;
+	/*width : 10px;*/
+}
+
+#tableauMonnayeur {
+	position : relative;
+	top : 100px;
+	margin : auto;	
+}
+
+#tableauMonnayeur2 {
+	position : relative;
+	top : 150px;
+	margin : auto;	
+}
+
+#tableauMonnayeur td{
+	text-align: center;
+	width : 65px;
+}
+
+#tableauMonnayeur td p {
+	text-align: center;
+	margin : auto;
+}
+
+#tableauMonnayeur2 td{
+	text-align: center;
+	width : 65px;
+}
+
+#tableauMonnayeur2 td p {
+	text-align: center;
+	margin : auto;
+}
+
+#inventaireIngredients {
+	position : relative;
+	top : 200px;
+	margin: auto;
+}
+
+#inventaireIngredients td {
+	width : 75px;
+	text-align: center;
+}
+#inventaireIngredients tr {
+	height: 70px;
+}
+
+#inventaireIngredients td p {
+	text-align: center;
+	margin : auto;
+}
+
+#logo {
+	position : relative ;
+	top : 240px;
+	left : 370px;
+}
+

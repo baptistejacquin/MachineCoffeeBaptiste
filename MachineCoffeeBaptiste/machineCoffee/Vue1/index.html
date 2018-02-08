@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../Vue2/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="../Vue2/scriptVue2.js"></script>
+</head>
+<body>
+	<div id="fond">
+		<div id="messageMonnaie">
+			<p id="Alerte" class="msg">Nous vous remercions d'avoir choisi notre machine</p>
+			<p id="msgMonnaie" class="msg tab1">Monnaie insérée :</p>
+			<p id="PrixMsgMonnaie" class="msg tab1">Prix de la Boisson :</p>
+			<p id="MsgRenduMonnaie" class="msg tab1">Monnaie à rendre :</p>
+			<p id="MonnaieMise" class="msg tab">0 €</p>
+			<p id="PrixBoisson" class="msg tab">0 €</p>
+			<p id="RendreMonnaie" class="msg tab">0 €</p>
+		</div>
+		<div id="AffichageSucre">
+			<img id="btnMoinSucre" src="image_machine/Vue1-assets/Bouton_moins_etat0.png">
+			<img class="led-on" id="ledSucre1" src="image_machine/Vue1-assets/led_sucre1_etat1.png">
+			<img class="led-on" id="ledSucre2" src="image_machine/Vue1-assets/led_sucre2_etat1.png">
+			<img class="led-off" id="ledSucre3" src="image_machine/Vue1-assets/led_sucre3_etat1.png">
+			<img class="led-off" id="ledSucre4" src="image_machine/Vue1-assets/led_sucre4_etat1.png">
+			<img id="btnPluSucre" src="image_machine/Vue1-assets/Bouton_plus_etat0.png">
+		</div>
+		<div id="btnBoisson">
+			<img id="btnExpresso" src="image_machine/Vue1-assets/Bouton_Expresso_etat0.png">
+			<img id="btnDouble_expresso" src="image_machine/Vue1-assets/Bouton_Double_expresso_etat0.png">
+			<img id="btncafe_long" src="image_machine/Vue1-assets/Bouton_cafe_long_etat0.png">
+			<img id="btncappuccino" src="image_machine/Vue1-assets/Bouton_cappuccino_etat0.png">
+		</div>
+		<div id="boutonMonnaie">
+			<img id="boutonRetour" src="image_machine/Vue1-assets/Bouton_rendu_monnaie_etat0.png">
+			<img id="boutonPiece2" src="image_machine/Vue1-assets/Bouton_piece2_etat0.png">
+			<img id="boutonPiece1" src="image_machine/Vue1-assets/Bouton_piece1_etat0.png">
+			<img id="boutonPiece50" src="image_machine/Vue1-assets/Bouton_piece50_etat0.png">
+			<img id="boutonPiece20" src="image_machine/Vue1-assets/Bouton_piece20_etat0.png">
+			<img id="boutonPiece10" src="image_machine/Vue1-assets/Bouton_piece10_etat0.png">
+			<img id="boutonPiece5" src="image_machine/Vue1-assets/Bouton_piece5_etat0.png">
+		</div>
+		<div id="maintenance">
+			<a href="#fond2"><img id="boutonMaintenance" src="image_machine/Vue1-assets/Manitenance_etat0.png"></a>
+		</div>
+		<div id="boisson">
+			<img id="tasse" src="image_machine/Vue1-assets/tasse_vide.png">
+		</div>
+
+	</div>
+
+	<div id="fond2">
+		<table id="tableauMonnayeur">
+			<tr id="pieces_rangée1">
+				<td></td>
+				<td><img id="piece2" src="../Vue2/Image/Vue2-assets/Bouton_vue2_2euro_ok.png"></td>
+				<td></td>
+				<td></td>
+				<td><img id="piece1" src="../Vue2/Image/Vue2-assets/Bouton_vue2_1euro_ok.png"></td>
+				<td></td>
+				<td></td>
+				<td><img id="piece50" src="../Vue2/Image/Vue2-assets/Bouton_vue2_50cts_ok.png"></td>
+				<td></td>
+			</tr>
+			<tr id="pieces_rangée2">
+				<td><img id="bouton_moins_2" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage2" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_2" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>			
+				<td><img id="bouton_moins_1" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage1" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_1" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+				<td><img id="bouton_moins_50" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage50" class="affichage"><p>2</p></td>
+				<td><img id="bouton_plus_50" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+			</tr>
+		</table>
+
+		<table id="tableauMonnayeur2">
+			<tr id="pieces_rangée3">
+				<td></td>
+				<td><img id="piece20" src="../Vue2/Image/Vue2-assets/Bouton_vue2_20cts_ok.png"></td>
+				<td></td>
+				<td></td>
+				<td><img id="piece10" src="../Vue2/Image/Vue2-assets/Bouton_vue2_10cts_ok.png"></td>
+				<td></td>
+				<td></td>
+				<td><img id="piece5" src="../Vue2/Image/Vue2-assets/Bouton_vue2_5cts_ok.png"></td>
+				<td></td>
+			</tr>
+			<tr id="pieces_rangée4">
+				<td><img id="bouton_moins_20" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+
+				<td id="affichage20" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_20" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>			
+				<td><img id="bouton_moins_10" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage10" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_10" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+				<td><img id="bouton_moins_5" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage5" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_5" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+			</tr>
+		</table>
+		
+		<table id="inventaireIngredients">
+			<tr>
+				<td><img id="inventaire_café" src="../Vue2/Image/Vue2-assets/Cafe_ok.png"></td>
+				<td><img id="bouton_moins_café" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage_café" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_café" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+			</tr>
+			<tr>
+				<td><img id="inventaire_eau" src="../Vue2/Image/Vue2-assets/eau_ok.png"></td>
+				<td><img id="bouton_moins_eau" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage_eau" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_eau" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+			</tr>
+			<tr>
+				<td><img id="inventaire_sucre" src="../Vue2/Image/Vue2-assets/sucre_ok.png"></td>
+				<td><img id="bouton_moins_sucre" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage_sucre" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_sucre" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+			</tr>
+			<tr>
+				<td><img id="inventaire_lait" src="../Vue2/Image/Vue2-assets/lait_ok.png"></td>
+				<td><img id="bouton_moins_lait" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage_lait" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_lait" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+			</tr>
+			<tr>
+				<td><img id="inventaire_gobelet" src="../Vue2/Image/Vue2-assets/Gobelet_ok.png"></td>
+				<td><img id="bouton_moins_gobelet" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage_gobelet" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_gobelet" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+			</tr>
+			<tr>
+				<td><img id="inventaire_touillette" src="../Vue2/Image/Vue2-assets/Touillette_ok.png"></td>
+				<td><img id="bouton_moins_touillette" src="../Vue2/Image/Vue2-assets/Bouton_moins_recharge.png"></td>
+				<td id="affichage_touillette" class="affichage"><p></p></td>
+				<td><img id="bouton_plus_touillette" src="../Vue2/Image/Vue2-assets/Bouton_plus_recharge.png"></td>
+			</tr>
+		</table>
+
+		<div id="logo">
+			<a href="#fond"><img id="logocafé" src="../Vue2/Image/Vue2-assets/Bouton_retour_machine_normal.png"></a>
+        </div>
+	</div>
+
+</body>
+</html>
