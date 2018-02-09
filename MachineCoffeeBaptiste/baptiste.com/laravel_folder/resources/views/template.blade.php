@@ -26,7 +26,7 @@
     <!-- Styles -->
     <style>
         html, body {
-            background-color: #2ab27b;
+            background-color: #f1fff6;
             color: #636b6f;
             font-family: 'Raleway', sans-serif;
             font-weight: 100;
