@@ -17,8 +17,8 @@ class FrontController extends Controller
     public function index()
     {
         $boissons = Boisson::all();
-        $nbSucres = Ingredient::where('nom','Sucre')->get();
-        return view('Front', ['boissons'=>$boissons,'nbSucres'=>$nbSucres]);
+        $nbSucres = Ingredient::where('nom', 'Sucre')->first();
+        return view('Front', ['boissons' => $boissons, 'nbSucres' => $nbSucres]);
     }
 
     /**
@@ -34,18 +34,25 @@ class FrontController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $vente = new Vente;
+        $vente->boisson_id = request('boisson');
+        $vente->save();
+
+        $sucre = Ingredient::where('nom', 'Sucre')->first();
+        $sucre->stock = $sucre->stock - request('sucre');
+        $sucre->save();
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -56,7 +63,7 @@ class FrontController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -67,8 +74,8 @@ class FrontController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -79,7 +86,7 @@ class FrontController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

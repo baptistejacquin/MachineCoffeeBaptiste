@@ -20,7 +20,6 @@
     <!-- Form Name -->
         <br>
         <legend>Modification Recette</legend>
-
         <select name="boisson" id="selectbasic" class="form-control">
             <option selected disabled value="Drink selection">Drink selection</option>
             @foreach ($boissons as $boisson)
@@ -28,11 +27,11 @@
             @endforeach
         </select><br>
 
-        <select name="ingredient" id="selecting" class="form-control">
+        <select name="sucre" id="selecting" class="form-control">
             <option selected disabled value="Nb Sucre">Nb Sucre</option>
 
-            @for($i=0; $i <= $nbSucres[0]->stock && $i <= 5; $i++)
-                    <option value="{{$i}}" label="{{$i}}">{{$i}}</option>
+            @for($i=0; $i <= $nbSucres->stock && $i <= 5; $i++)
+                <option value="{{$i}}" label="{{$i}}">{{$i}}</option>
             @endfor
         </select><br>
 
