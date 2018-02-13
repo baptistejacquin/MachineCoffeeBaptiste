@@ -11,13 +11,13 @@
 
 
 @section('contenu')
-    <table class="table-striped col-md-12 table-hover">
+    <table class="table-striped col-md-12 table-hover ">
         @foreach ($ventes as $vente)
             <tr>
                 <td><h3>Vente n° {{$vente->id}}</h3></td>
                 <td><h3>Boisson : {{$vente->boisson->nom}}</h3></td>
-                <td><h3>Nb Sucre : {{request('sucre')}}</h3></td>
                 <td><h3>Prix : {{$vente->boisson->prix}} cts</h3></td>
+                <td><h3>Client : {{$vente->user->name}} </h3></td>
                 <td><h3>{{$vente->created_at}}</h3></td>
             </tr>
         @endforeach

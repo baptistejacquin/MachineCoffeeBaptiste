@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Vente;
-use App\Boisson;
-use App\Ingredient;
-use Illuminate\Support\Facades\Auth;
+use App\User;
 
-class FrontController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,8 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $boissons = Boisson::all();
-        $nbSucres = Ingredient::where('nom', 'Sucre')->first();
-        return view('Front', ['boissons' => $boissons, 'nbSucres' => $nbSucres]);
+        $users = User::all();
+        return view('admin', ["users" => $users]);
     }
 
     /**
@@ -38,17 +34,9 @@ class FrontController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $vente = new Vente;
-        $vente->boisson_id = request('boisson');
-        $vente->user_id = Auth::id();
-        $vente->save();
-
-        $sucre = Ingredient::where('nom', Ingredient::SUCRE)->first();
-        $sucre->stock = $sucre->stock - request('sucre');
-        $sucre->save();
-        return redirect()->back();
+        //
     }
 
     /**
@@ -59,7 +47,7 @@ class FrontController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -70,7 +58,8 @@ class FrontController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('modifUser', ["user" => $user]);
     }
 
     /**
@@ -80,9 +69,13 @@ class FrontController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $modif = User::find($id);
+        $modif->role = request('role');
+        $modif->name = request('nom');
+        $modif->save();
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -93,6 +86,7 @@ class FrontController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $supp = User::destroy($id);
+        return redirect()->route('admin.index');
     }
 }

@@ -13,11 +13,10 @@ class ModifVente extends Migration
      */
     public function up()
     {
-        Schema::table('ventes', function (Blueprint $table) {
-            $table->integer('boisson_id');
-            $table->foreign('boisson_id')
-                ->references('id')->on('boissons')
-                ->onDelete('cascade');
+        Schema::table('ventes',function(Blueprint $table){
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('users');
         });
     }
 
@@ -29,8 +28,7 @@ class ModifVente extends Migration
     public function down()
     {
         Schema::table('ventes', function (Blueprint $table) {
-            $table->dropForeign(['boisson_id']);
-            $table->dropColumn('boisson_id');
+            $table->dropColumn('user_id');
         });
     }
 }

@@ -1,36 +1,24 @@
-<?php  
+<?php
 
 namespace App\Http\Controllers;
 
 
 use App\Vente;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ControllerVente extends Controller
 {
     public function index()
-   {
-        $ventes = Vente::all();
-// [
-//
-//        "1" => ["date" => '01-01-18',
-//                "heure" => '13:02',
-//                "boisson"=> 'cafe'
-//                ],
-//        "2" => ["date" => '01-01-18',
-//                "heure" => '13:11',
-//                "boisson"=> 'the'
-//                ],
-//        "3" => ["date" => '01-01-18',
-//                "heure" => '13:12',
-//                "boisson"=> 'chocolat'
-//                ],
-//        "4" => ["date" => '01-01-18',
-//                "heure" => '13:22',
-//                "boisson"=> 'cafe'
-//                ],
-//        ];
+    {
+        if (Gate::allows('adminSuperAdmin')) {
+            $ventes = Vente::all();
+            return view('vente', compact('ventes'));
+        }elseif (Gate::allows('user')){
+            $ventes = Vente::where('user_id', Auth::id())->get();
+            return view('vente', compact('ventes'));
 
-    return view('vente', compact('ventes'));
+        }
     }
 }
 

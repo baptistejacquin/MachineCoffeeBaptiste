@@ -1,18 +1,47 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="{{url('fronts')}}" class="navbar-brand">Machine à Coffee</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="{{route('boissonBdd')}}"> Boissons</a></li>
-            <li><a href="{{url('ingredients')}}">Ingrédients</a></li>
-            <li><a href="{{url('recette')}}">Recette</a></li>
-            <li><a href="{{url('monnaie')}}">Monnaie</a></li>
-            <li><a href="{{url('vente')}}">Vente</a></li>
+<nav class="navbar navbar-inverse ">
+    <div class="container-fluid ">
+        @if (Gate::allows('admin'))
+            <div class="navbar-header">
+                <a href="{{url('/')}}" class="navbar-brand">Machine à Coffee</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/Accueil">Accueil</a></li>
+                <li><a href="{{route('boissonBdd')}}"> Boissons</a></li>
+                <li><a href="{{url('ingredients')}}">Ingrédients</a></li>
+                <li><a href="{{url('recette')}}">Recette</a></li>
+                <li><a href="{{url('monnaie')}}">Monnaie</a></li>
+                <li><a href="{{url('vente')}}">Vente</a></li>
 
-        </ul>
-        <!-- Right Side Of Navbar -->
+            </ul>
+            @elseif (Gate::allows('superadmin'))
+                <div class="navbar-header">
+                    <a href="{{url('/')}}" class="navbar-brand">Machine à Coffee</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/Accueil">Accueil</a></li>
+                    <li><a href="{{route('boissonBdd')}}"> Boissons</a></li>
+                    <li><a href="{{url('ingredients')}}">Ingrédients</a></li>
+                    <li><a href="{{url('recette')}}">Recette</a></li>
+                    <li><a href="{{url('monnaie')}}">Monnaie</a></li>
+                    <li><a href="{{url('vente')}}">Vente</a></li>
+                    <li><a href="{{route('admin.index')}}">Users</a></li>
+
+                </ul>
+        @elseif(Gate::allows('user'))
+
+            <div class="navbar-header">
+                <a href="{{url('/')}}" class="navbar-brand">Machine à Coffee</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/Accueil">Accueil</a></li>
+                <li><a href="{{url('vente')}}">Vente</a></li>
+            </ul>
+        @else
+            <div class="navbar-header">
+                <a href="{{url('/')}}" class="navbar-brand">Machine à Coffee</a>
+            </div>
+    @endif
+    <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
             @guest

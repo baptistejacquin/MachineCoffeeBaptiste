@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/test', function () {
+Route::get('/Accueil', function () {
     return view('Accueil');
 })->middleware('auth');
+
 // Ingredient
 Route::get('ingredients','ControllerIngredients@bdd')->middleware('auth');
 Route::get('ingredients','ControllerIngredients@bdd')->middleware('auth');
@@ -45,7 +46,7 @@ Route::delete('supp/{id}', 'ControllerBoisson@supp')->name('boissonSupp')->middl
 
 Route::get('boisson','ControllerBoisson@bdd')->name('boissonBdd')->middleware('auth');
 
-Route::get('FormAjourboisson','ControllerBoisson@ajout')->name('formAjoutBoisson')->middleware('auth');
+Route::get('FormAjoutboisson','ControllerBoisson@ajout')->name('formAjoutBoisson')->middleware('auth');
 
 Route::get('boissonZA','ControllerBoisson@orderZA')->middleware('auth');
 
@@ -93,5 +94,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 
-//Les routes pour la ressource Front
-Route::resource('fronts', 'FrontController') ;
+//Les routes pour la resource Front
+Route::resource('/', 'FrontController') ;
+
+//Les routes pour la resource Admin
+Route::resource('admin', 'AdminController') ;

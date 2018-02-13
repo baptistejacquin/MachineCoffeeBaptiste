@@ -11,6 +11,7 @@
 
 @section('contenu')
     <table class="table-striped col-md-12 table-hover">
+
         @foreach($recettes as $recette)
 
             <tr>
