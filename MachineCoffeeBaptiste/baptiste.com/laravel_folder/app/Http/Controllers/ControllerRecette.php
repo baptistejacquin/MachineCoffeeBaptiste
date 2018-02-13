@@ -65,7 +65,7 @@ class ControllerRecette extends Controller
         }
     }
 
-    // fonction pour ajouter une nouvelle recette
+// fonction pour ajouter une nouvelle recette
     public function store()
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -80,6 +80,7 @@ class ControllerRecette extends Controller
         }
     }
 
+// fonction pour afficher le formulaire de modification des recettes
     public function mod($id)
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -94,6 +95,7 @@ class ControllerRecette extends Controller
         }
     }
 
+// fonction pour modifier des recettes en récupérant les données du form de modification des recettes
     public function modif($id)
     {
         if (Gate::allows('adminSuperAdmin')) {

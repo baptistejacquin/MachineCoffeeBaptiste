@@ -17,6 +17,7 @@
                 <td><h3>n° {{$user->id}}</h3></td>
                 <td><h3>Nom : {{$user->name}}</h3></td>
                 <td><h3>Role : {{$user->role}}</h3></td>
+        @if(Gate::allows('superadmin'))
                 <td><a href="{{route('admin.edit',[$user->id])}}"
                        class="btn btn-sm btn-success">Modifier</a></td>
                 <td>
@@ -26,6 +27,7 @@
                         <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                     </form>
                 </td>
+        @endif
                 {{--<td><h3>{{$vente->created_at}}</h3></td>--}}
             </tr>
         @endforeach

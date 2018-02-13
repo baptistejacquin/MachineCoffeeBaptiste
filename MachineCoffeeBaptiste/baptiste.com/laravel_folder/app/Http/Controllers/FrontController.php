@@ -7,6 +7,7 @@ use App\Vente;
 use App\Boisson;
 use App\Ingredient;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class FrontController extends Controller
 {
@@ -40,15 +41,27 @@ class FrontController extends Controller
      */
     public function store()
     {
-        $vente = new Vente;
-        $vente->boisson_id = request('boisson');
-        $vente->user_id = Auth::id();
-        $vente->save();
+        if (Gate::allows('all')) {
+            $vente = new Vente;
+            $vente->boisson_id = request('boisson');
+            $vente->user_id = Auth::id();
+            $vente->save();
 
-        $sucre = Ingredient::where('nom', Ingredient::SUCRE)->first();
-        $sucre->stock = $sucre->stock - request('sucre');
-        $sucre->save();
-        return redirect()->back();
+            $sucre = Ingredient::where('nom', Ingredient::SUCRE)->first();
+            $sucre->stock = $sucre->stock - request('sucre');
+            $sucre->save();
+            return redirect()->back();
+        }else{
+            $vente = new Vente;
+            $vente->boisson_id = request('boisson');
+            $vente->user_id = 0;
+            $vente->save();
+
+            $sucre = Ingredient::where('nom', Ingredient::SUCRE)->first();
+            $sucre->stock = $sucre->stock - request('sucre');
+            $sucre->save();
+            return redirect()->back();
+        }
     }
 
     /**

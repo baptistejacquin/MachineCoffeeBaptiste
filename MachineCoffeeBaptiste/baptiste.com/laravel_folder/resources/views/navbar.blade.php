@@ -11,6 +11,7 @@
                 <li><a href="{{url('recette')}}">Recette</a></li>
                 <li><a href="{{url('monnaie')}}">Monnaie</a></li>
                 <li><a href="{{url('vente')}}">Vente</a></li>
+                <li><a href="{{route('admin.index')}}">Users</a></li>
 
             </ul>
             @elseif (Gate::allows('superadmin'))
@@ -34,7 +35,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="/Accueil">Accueil</a></li>
-                <li><a href="{{url('vente')}}">Vente</a></li>
+                <li><a href="{{url('vente')}}">Achat</a></li>
             </ul>
         @else
             <div class="navbar-header">

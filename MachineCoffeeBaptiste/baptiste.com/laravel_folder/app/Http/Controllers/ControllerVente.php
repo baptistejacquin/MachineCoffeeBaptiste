@@ -9,12 +9,18 @@ use Illuminate\Support\Facades\Gate;
 
 class ControllerVente extends Controller
 {
+
+
+// fonction pour afficher la liste des ventes
     public function index()
     {
+//voir toutes les ventes si admin ou super admin
         if (Gate::allows('adminSuperAdmin')) {
             $ventes = Vente::all();
             return view('vente', compact('ventes'));
-        }elseif (Gate::allows('user')){
+
+//voir juste les recettes du user connecté
+        } elseif (Gate::allows('user')) {
             $ventes = Vente::where('user_id', Auth::id())->get();
             return view('vente', compact('ventes'));
 

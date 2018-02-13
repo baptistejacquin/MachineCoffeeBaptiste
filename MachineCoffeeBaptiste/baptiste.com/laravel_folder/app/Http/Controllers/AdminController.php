@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
 {
@@ -12,10 +13,17 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+// fonction pour afficher la liste des User que si admin ou super admin
     public function index()
     {
-        $users = User::all();
-        return view('admin', ["users" => $users]);
+        if (Gate::allows('adminSuperAdmin')) {
+            $users = User::all();
+            return view('admin', ["users" => $users]);
+        } else {
+            return abort(404);
+        }
     }
 
     /**
@@ -56,10 +64,17 @@ class AdminController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
+
+// fonction pour afficher le formulaire de modification des User que si super admin
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('modifUser', ["user" => $user]);
+        if (Gate::allows('superadmin')) {
+            $user = User::find($id);
+            return view('modifUser', ["user" => $user]);
+        } else {
+            return abort(404);
+        }
     }
 
     /**
@@ -69,13 +84,20 @@ class AdminController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
+
+// fonction pour modifier l'User en récupérant les infos du formulaire de modif que si super admin
     public function update($id)
     {
-        $modif = User::find($id);
-        $modif->role = request('role');
-        $modif->name = request('nom');
-        $modif->save();
-        return redirect()->route('admin.index');
+        if (Gate::allows('superadmin')) {
+            $modif = User::find($id);
+            $modif->role = request('role');
+            $modif->name = request('nom');
+            $modif->save();
+            return redirect()->route('admin.index');
+        } else {
+            return abort(404);
+        }
     }
 
     /**
@@ -86,7 +108,11 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $supp = User::destroy($id);
-        return redirect()->route('admin.index');
+        if (Gate::allows('superadmin')) {
+            $supp = User::destroy($id);
+            return redirect()->route('admin.index');
+        }else{
+            return abort(404);
+        }
     }
 }

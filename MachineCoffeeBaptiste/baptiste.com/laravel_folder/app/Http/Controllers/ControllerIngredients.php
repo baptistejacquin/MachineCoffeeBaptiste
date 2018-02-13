@@ -22,7 +22,7 @@ class ControllerIngredients extends Controller
     //    	return view('ingredients', compact('stockIngredients'));
     // }
 
-
+// fonction pour créer un nouvel ingrédient
     public function store()
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -38,6 +38,7 @@ class ControllerIngredients extends Controller
         }
     }
 
+// fonction pour afficher le formulaire d'ajout des ingrédients
     public function ajout()
     {
         if (\Gate::allows('adminSuperAdmin')) {
@@ -47,6 +48,7 @@ class ControllerIngredients extends Controller
         }
     }
 
+// fonction pour afficher la liste de ingrédients
     public function bdd()
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -57,6 +59,7 @@ class ControllerIngredients extends Controller
         }
     }
 
+// fonction pour afficher la page du détail d'une recette
     public function edit($id)
     {
         if (\Gate::allows('adminSuperAdmin')) {
@@ -67,6 +70,7 @@ class ControllerIngredients extends Controller
         }
     }
 
+// fonction pour afficher le formulaire de modification de l'ingrédient
     public function mod($id)
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -77,6 +81,7 @@ class ControllerIngredients extends Controller
         }
     }
 
+// fonction pour modifier l'ingrédients en récupérant les infos du formulaire de modif
     public function modif($id)
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -90,6 +95,7 @@ class ControllerIngredients extends Controller
         }
     }
 
+// fonction pour supprimer un ingrédient précisé par l'id
     public function supp($id)
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -100,6 +106,7 @@ class ControllerIngredients extends Controller
         }
     }
 
+// fonction pour afficher la liste des ingrédients par ordre décroissant
     public function orderZA()
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -110,6 +117,8 @@ class ControllerIngredients extends Controller
         }
     }
 
+// fonction pour afficher la liste des ingrédients par ordre de prix croissant
+
     public function orderUp()
     {
         if (Gate::allows('adminSuperAdmin')) {
@@ -119,6 +128,8 @@ class ControllerIngredients extends Controller
             return abort(404);
         }
     }
+
+// fonction pour afficher la liste des ingrédients par ordre de prix décroissant
 
     public function orderDown()
     {
