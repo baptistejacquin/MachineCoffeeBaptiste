@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Recette;
 use Illuminate\Http\Request;
 use App\Vente;
 use App\Boisson;
@@ -41,27 +42,36 @@ class FrontController extends Controller
      */
     public function store()
     {
-        if (Gate::allows('all')) {
+        // fonction pour créer une nouvelle vente
             $vente = new Vente;
             $vente->boisson_id = request('boisson');
-            $vente->user_id = Auth::id();
+            if (Auth::user()) {
+                $vente->user_id = Auth::id();
+            }else{
+                $vente->user_id = 0;
+            }
+            $vente->boisson_prix = $vente->boisson->prix;
+            $vente->nbSucre = request('sucre');
             $vente->save();
 
+            // Fonction pour déduire le stock en fonction de la recette de la boisson
+            $recettes = Recette::where('boisson_id', request('boisson'))->get();
+            foreach ($recettes as $recette) {
+                $nbdose = $recette->quantite;
+                $ingredients = Ingredient::where('id', $recette->ingredient_id)->get();
+                foreach ($ingredients as $ingredient) {
+                    $ingredient->stock = $ingredient->stock - $nbdose;
+                    $ingredient->save();
+                }
+            }
+
+            // Fonction qui déduit le stock de Sucre
             $sucre = Ingredient::where('nom', Ingredient::SUCRE)->first();
             $sucre->stock = $sucre->stock - request('sucre');
             $sucre->save();
-            return redirect()->back();
-        }else{
-            $vente = new Vente;
-            $vente->boisson_id = request('boisson');
-            $vente->user_id = 0;
-            $vente->save();
 
-            $sucre = Ingredient::where('nom', Ingredient::SUCRE)->first();
-            $sucre->stock = $sucre->stock - request('sucre');
-            $sucre->save();
             return redirect()->back();
-        }
+
     }
 
     /**

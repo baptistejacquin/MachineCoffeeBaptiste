@@ -20,6 +20,7 @@
         @if(Gate::allows('superadmin'))
                 <td><a href="{{route('admin.edit',[$user->id])}}"
                        class="btn btn-sm btn-success">Modifier</a></td>
+                @if($user->role != "super admin")
                 <td>
                     <form action="{{route('admin.destroy',[$user->id])}}" method="post">
                         {{method_field('DELETE')}}
@@ -27,6 +28,7 @@
                         <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                     </form>
                 </td>
+                @endif
         @endif
                 {{--<td><h3>{{$vente->created_at}}</h3></td>--}}
             </tr>

@@ -15,4 +15,14 @@ class Boisson extends Model
     public function ventes(){
         return $this->hasMany('App\Vente');
     }
+
+    public function available(){
+        $recettes= $this->recettes;
+        foreach ($recettes as $recette){
+            if ($recette->ingredient->stock < $recette->quantite){
+                return false;
+            }
+        }
+        return true;
+    }
 }
