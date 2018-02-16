@@ -85,7 +85,9 @@ Route::get('monnaie', 'ControllerMonnaie@mon')->middleware('auth');
 
 
 
-Route::get('vente', 'ControllerVente@index')->middleware('auth');
+Route::get('vente', 'ControllerVente@index')->name('listeVente')->middleware('auth');
+
+Route::post('vente','ControllerVente@trier')->name('triVente')->middleware('auth');
 
 
 
@@ -99,3 +101,5 @@ Route::resource('/', 'FrontController') ;
 
 //Les routes pour la resource Admin
 Route::resource('admin', 'AdminController') ;
+
+Route::post('admin','AdminController@trier')->name('triUser')->middleware('auth');

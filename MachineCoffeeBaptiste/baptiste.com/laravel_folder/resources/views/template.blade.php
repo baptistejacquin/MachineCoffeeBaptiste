@@ -18,6 +18,12 @@
             crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
+{{--bar de recherche--}}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
     <title>@yield('title')</title>
 
     <!-- Fonts -->
@@ -79,18 +85,83 @@
         .navbar {
             font-size: 25px;
         }
+
+        .scroll{
+            height: 500px;
+            overflow-y: auto;
+        }
+
+        #header{
+            width: 100%;
+            height: 5px;
+
+        }
+
+        .search-form .form-group {
+            float: right !important;
+            transition: all 0.35s, border-radius 0s;
+            width: 32px;
+            height: 32px;
+            background-color: #fff;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+        }
+        .search-form .form-group input.form-control {
+            padding-right: 20px;
+            border: 0 none;
+            background: transparent;
+            box-shadow: none;
+            display:block;
+        }
+        .search-form .form-group input.form-control::-webkit-input-placeholder {
+            display: none;
+        }
+        .search-form .form-group input.form-control:-moz-placeholder {
+            /* Firefox 18- */
+            display: none;
+        }
+        .search-form .form-group input.form-control::-moz-placeholder {
+            /* Firefox 19+ */
+            display: none;
+        }
+        .search-form .form-group input.form-control:-ms-input-placeholder {
+            display: none;
+        }
+        .search-form .form-group:hover,
+        .search-form .form-group.hover {
+            width: 100%;
+            border-radius: 4px 25px 25px 4px;
+        }
+        .search-form .form-group span.form-control-feedback {
+            position: absolute;
+            top: -1px;
+            right: -2px;
+            z-index: 2;
+            display: block;
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            color: #3596e0;
+            left: initial;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body class="">
 @include('navbar')
-<div class="flex-center position-ref full-height">
+<div class="flex-center position-ref ">
 
 
     <div class="content">
         <div class="title m-b-md">
             @yield('titrePage')
             @yield('bouton')
+
         </div>
+        @yield('search')
+        @include('flash-message')
         @yield('contenu')
         @yield('liste')
         @yield('form')

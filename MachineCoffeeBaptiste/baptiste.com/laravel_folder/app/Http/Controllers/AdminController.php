@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Vente;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Gate;
@@ -34,6 +35,17 @@ class AdminController extends Controller
     public function create()
     {
         //
+    }
+
+
+    public function trier(){
+        $users=User::where('role',request("search"))->get();
+        if (!$users->isEmpty()) {
+            return view('admin', compact('users'));
+        }else{
+            return redirect()->back()->with('error',"Le Role n'éxiste pas ou personne ne correspond " );
+
+        }
     }
 
     /**

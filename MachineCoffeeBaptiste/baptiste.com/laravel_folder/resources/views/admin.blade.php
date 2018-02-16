@@ -10,6 +10,26 @@
 @endsection
 
 
+@section('search')
+    <div class="container">
+        <div class="row">
+            <a  href="{{route('triUser')}}" class="btn btn-info col-lg-1">Sans Tri</a>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-12">
+                <form method="post" action="{{route("triUser")}}" class="search-form">
+                    {{csrf_field()}}
+                    <div class="form-group has-feedback">
+                        <label for="search" class="sr-only">Search</label>
+                        <input type="text" class="form-control" name="search" id="search" placeholder="search role">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('contenu')
     <table class="table-striped col-md-12 table-hover ">
         @foreach ($users as $user)

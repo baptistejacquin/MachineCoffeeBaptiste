@@ -4,13 +4,13 @@
 @section('titrePage')
 
     <!--    --><?php //stockSucre(); ?>
-    Machine à Café
+    COFFEE MACHINE
 
 @endsection
 
 @section('contenu')
     <h3><?= date("l,j,F,Y H i A");?></h3> <!-- Affichage de l'heure -->
-    <h3> Boissons disponible</h3>
+    <h3> Boissons disponibles</h3>
 @endsection
 
 @section('form')
