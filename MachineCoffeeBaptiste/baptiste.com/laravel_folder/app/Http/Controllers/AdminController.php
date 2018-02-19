@@ -41,8 +41,13 @@ class AdminController extends Controller
     public function trier(){
         $users=User::where('role',request("searchUser"))->get();
         $usersName = User::select('id')->where("name", request("searchUser"))->get()->first();
+        $emailUser = User::select('id')->where("email", request("searchUser"))->get()->first();
         if (!$users->isEmpty()) {
             return view('admin', compact('users'));
+
+        }else if ($emailUser) {
+            $Usersmail = User::where('id', $emailUser->id)->orderby("created_at", "DESC")->get();
+            return view('admin', ['users'=>$Usersmail]);
 
         }else if ($usersName) {
             $nomUsers = User::where('id', $usersName->id)->orderby("created_at", "DESC")->get();

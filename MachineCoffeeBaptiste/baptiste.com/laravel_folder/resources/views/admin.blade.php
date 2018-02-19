@@ -36,6 +36,7 @@
             <tr>
                 <td><h3>n° {{$user->id}}</h3></td>
                 <td><h3>Nom : {{$user->name}}</h3></td>
+                <td><h3> {{$user->email}}</h3></td>
                 <td><h3>Role : {{$user->role}}</h3></td>
         @if(Gate::allows('superadmin'))
                 <td><a href="{{route('admin.edit',[$user->id])}}"
