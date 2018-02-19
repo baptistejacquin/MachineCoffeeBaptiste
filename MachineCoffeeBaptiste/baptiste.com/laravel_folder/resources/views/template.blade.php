@@ -87,7 +87,12 @@
         }
 
         .scroll{
-            height: 500px;
+             height: 500px;
+             overflow-y: auto;
+         }
+
+        .scrollboisson{
+            height: 350px;
             overflow-y: auto;
         }
 

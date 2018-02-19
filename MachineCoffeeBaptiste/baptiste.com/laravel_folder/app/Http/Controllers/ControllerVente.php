@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Vente;
 use App\Boisson;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -28,16 +29,21 @@ class ControllerVente extends Controller
         }
     }
 
+
     public function trier()
     {
-        $idboisson = Boisson::select('id')->where('nom', request("search"))->get()->first();
-
+        $idboisson = Boisson::select('id')->where('nom', request("searchVente"))->get()->first();
+        $users = User::select('id')->where("name", request("searchVente"))->get()->first();
         if ($idboisson) {
             $ventes = Vente::where('boisson_id', $idboisson->id)->orderby("created_at", "DESC")->get();
             return view('vente', compact('ventes'));
-        } else {
-            return redirect()->back()->with('error', "La boisson n'éxiste pas");
 
+        }else if ($users) {
+            $ventes = Vente::where('user_id', $users->id)->orderby("created_at", "DESC")->get();
+            return view('vente', compact('ventes'));
+
+        } else {
+            return redirect()->back()->with('error', "La rechercher ne correspond à rien");
         }
     }
 }

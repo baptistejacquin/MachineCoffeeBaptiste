@@ -140,6 +140,18 @@ class ControllerIngredients extends Controller
             return abort(404);
         }
     }
+
+    public function search()
+    {
+        $ingredientNom = Ingredient::select('nom')->where('nom', request("searchIngredient"))->get()->first();
+
+        if ($ingredientNom) {
+            $ingredients = Ingredient::where('nom', $ingredientNom->nom)->get();
+            return view('ingredients', ['ordre' => $ingredients]);
+        } else {
+            return redirect()->back()->with('error', "L'ingredient n'éxiste pas");
+        }
+    }
 }
 
 

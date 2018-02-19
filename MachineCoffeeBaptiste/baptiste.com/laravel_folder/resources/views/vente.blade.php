@@ -12,6 +12,7 @@
 
 
 @section('search')
+    @if(Gate::allows("adminSuperAdmin"))
     <div class="container">
         <div class="row">
             <a href="{{route('listeVente')}}" class="btn btn-info col-lg-1">Sans Tri</a>
@@ -23,13 +24,14 @@
                     {{csrf_field()}}
                     <div class="form-group has-feedback">
                         <label for="search" class="sr-only">Search</label>
-                        <input type="text" class="form-control" name="search" id="search" placeholder="search Drinks">
+                        <input type="text" class="form-control" name="searchVente" id="search" placeholder="search Drinks">
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    @endif
 @endsection
 
 @section('contenu')

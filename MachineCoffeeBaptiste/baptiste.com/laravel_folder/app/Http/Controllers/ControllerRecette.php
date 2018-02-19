@@ -109,6 +109,17 @@ class ControllerRecette extends Controller
             return abort(404);
         }
     }
+
+    public function search()
+    {
+        $boissonNom = Boisson::where('nom', request("searchRecette"))->get()->first();
+        if ($boissonNom) {
+            $boissons = Boisson::where('nom', $boissonNom->nom)->orderby("created_at", "DESC")->get();
+            return view('recette', ['nomBois' => $boissons]);
+        } else{
+            return redirect()->back()->with('error', "La boisson n'éxiste pas");
+        }
+    }
 }
 
 

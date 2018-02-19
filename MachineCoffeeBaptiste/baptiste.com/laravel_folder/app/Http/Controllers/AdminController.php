@@ -39,11 +39,17 @@ class AdminController extends Controller
 
 
     public function trier(){
-        $users=User::where('role',request("search"))->get();
+        $users=User::where('role',request("searchUser"))->get();
+        $usersName = User::select('id')->where("name", request("searchUser"))->get()->first();
         if (!$users->isEmpty()) {
             return view('admin', compact('users'));
+
+        }else if ($usersName) {
+            $nomUsers = User::where('id', $usersName->id)->orderby("created_at", "DESC")->get();
+            return view('admin', ['users'=>$nomUsers]);
+
         }else{
-            return redirect()->back()->with('error',"Le Role n'éxiste pas ou personne ne correspond " );
+            return redirect()->back()->with('error',"La rechercher ne correspond à rien" );
 
         }
     }

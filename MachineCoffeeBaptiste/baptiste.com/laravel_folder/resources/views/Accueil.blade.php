@@ -9,5 +9,5 @@
 @endsection
 
 @section('contenu')
-    <img height="600px" width="1000px" src="image/allez-faire-loutre.jpg"/>
+    <img height="600px" width="1000px" src="image/travelbenefitsbydesign.png"/>
 @endsection

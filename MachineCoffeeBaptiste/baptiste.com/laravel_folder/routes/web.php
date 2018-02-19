@@ -16,10 +16,11 @@ Route::get('/Accueil', function () {
 })->middleware('auth');
 
 // Ingredient
-Route::get('ingredients','ControllerIngredients@bdd')->middleware('auth');
-Route::get('ingredients','ControllerIngredients@bdd')->middleware('auth');
+Route::get('ingredients','ControllerIngredients@bdd')->name('listeIng')->middleware('auth');
 
-Route::post('ingredients','ControllerIngredients@store')->name('PostIng')->middleware('auth');
+Route::post('ingredients','ControllerIngredients@search')->name("triNomIngredient")->middleware('auth');
+
+Route::post('ingredientsStore','ControllerIngredients@store')->name('PostIng')->middleware('auth');
 
 Route::get('ingredients/{id}', 'ControllerIngredients@edit')->name('ingredientsEdit')->middleware('auth');
 
@@ -60,9 +61,12 @@ Route::post('modif/{id}','ControllerBoisson@modif')->name('boissonModification')
 
 Route::post('boissonRecette','ControllerBoisson@store')->middleware('auth');
 
+Route::post('boisson','ControllerBoisson@search')->name('triNom')->middleware('auth');
 //Recettes
 
-Route::get('recette', 'ControllerRecette@bdd')->middleware('auth');
+Route::get('recette', 'ControllerRecette@bdd')->name('listeRecettes')->middleware('auth');
+
+Route::post('recette','ControllerRecette@search')->name('TriNomRecette')->middleware('auth');
 
 Route::get('recette/{id}', 'ControllerRecette@edit')->name('recetteEdit')->middleware('auth');
 

@@ -43,8 +43,8 @@ class ControllerBoisson extends Controller
     public function bdd()
     {
         if (Gate::allows('adminSuperAdmin')) {
-            $test = Boisson::select()->orderby("nom", "ASC")->get();
-            return view('boisson', compact('test'));
+            $boissons = Boisson::select()->orderby("nom", "ASC")->get();
+            return view('boisson', compact('boissons'));
         } else {
             return abort(404);
         }
@@ -78,7 +78,7 @@ class ControllerBoisson extends Controller
     {
         if (Gate::allows('adminSuperAdmin')) {
             $order = Boisson::select()->orderby("nom", "DESC")->get();
-            return view('boisson', ['test' => $order]);
+            return view('boisson', ['boissons' => $order]);
         } else {
             return abort(404);
         }
@@ -114,8 +114,8 @@ class ControllerBoisson extends Controller
     public function orderUp()
     {
         if (Gate::allows('adminSuperAdmin')) {
-            $test = Boisson::select()->orderby("prix", "ASC")->get();
-            return view('boisson', compact('test'));
+            $boissons = Boisson::select()->orderby("prix", "ASC")->get();
+            return view('boisson', compact('boissons'));
         } else {
             return abort(404);
         }
@@ -125,12 +125,24 @@ class ControllerBoisson extends Controller
     public function orderDown()
     {
         if (Gate::allows('adminSuperAdmin')) {
-            $test = Boisson::select()->orderby("prix", "DESC")->get();
-            return view('boisson', compact('test'));
+            $boissons = Boisson::select()->orderby("prix", "DESC")->get();
+            return view('boisson', compact('boissons'));
         } else {
             return abort(404);
         }
 
+    }
+
+    public function search()
+    {
+        $boissonNom = Boisson::select('nom')->where('nom', request("searchBoisson"))->get()->first();
+
+        if ($boissonNom) {
+            $boissons = Boisson::where('nom', $boissonNom->nom)->orderby("created_at", "DESC")->get();
+            return view('boisson', compact('boissons'));
+        } else {
+            return redirect()->back()->with('error', "La boisson n'éxiste pas");
+        }
     }
 
 
