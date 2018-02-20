@@ -17,6 +17,12 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function test(){
+        if (Gate::allows('all')) {
+            return view('welcome');
+        }
+    }
+
     public function index()
     {
         $boissons = Boisson::all();

@@ -107,3 +107,5 @@ Route::resource('/', 'FrontController') ;
 Route::resource('admin', 'AdminController') ;
 
 Route::post('admin','AdminController@trier')->name('triUser')->middleware('auth');
+
+Route::get('/welcome','FrontController@test');

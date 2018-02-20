@@ -24,7 +24,7 @@
             <option selected disabled value="Drink selection">Drink selection</option>
             @foreach ($boissons as $boisson)
                 @if($boisson->available() == true)
-                <option value="{{ $boisson->id}}" label="{{ $boisson->nom}}"</option>
+                    <option value="{{ $boisson->id}}" label="{{ $boisson->nom}}"</option>
                 @endif
             @endforeach
         </select><br>

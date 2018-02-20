@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBoissonRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Boisson;
 use App\Recette;
 use Illuminate\Support\Facades\Gate;

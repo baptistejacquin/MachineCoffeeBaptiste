@@ -1,95 +1,68 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/scriptVue2.js"></script>
 </head>
-<body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">Register</a>
-            @endauth
-        </div>
-    @endif
-
-    <div class="content">
-        <div class="title m-b-md">
-            Hello World
-        </div>
-
-        <div class="links">
-            <a href="https://laravel.com/docs">Documentation</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
-        </div>
+<body id="machineCoffee">
+<div id="fond">
+    <div id="messageMonnaie">
+        <p id="Alerte" class="msg">Nous vous remercions d'avoir choisi notre machine</p>
+        <p id="msgMonnaie" class="msg tab1">Monnaie insérée :</p>
+        <p id="PrixMsgMonnaie" class="msg tab1">Prix de la Boisson :</p>
+        <p id="MsgRenduMonnaie" class="msg tab1">Monnaie à rendre :</p>
+        <p id="MonnaieMise" class="msg tab">0 €</p>
+        <p id="PrixBoisson" class="msg tab">0 €</p>
+        <p id="RendreMonnaie" class="msg tab">0 €</p>
     </div>
+    <div id="AffichageSucre">
+        <img id="btnMoinSucre" src="image_machine/Vue1-assets/Bouton_moins_etat0.png">
+        <img class="led-on" id="ledSucre1" src="image_machine/Vue1-assets/led_sucre1_etat1.png">
+        <img class="led-on" id="ledSucre2" src="image_machine/Vue1-assets/led_sucre2_etat1.png">
+        <img class="led-off" id="ledSucre3" src="image_machine/Vue1-assets/led_sucre3_etat1.png">
+        <img class="led-off" id="ledSucre4" src="image_machine/Vue1-assets/led_sucre4_etat1.png">
+        <img id="btnPluSucre" src="image_machine/Vue1-assets/Bouton_plus_etat0.png">
+    </div>
+    <div id="btnBoisson">
+        <img id="btnExpresso" src="image_machine/Vue1-assets/Bouton_Expresso_etat0.png">
+        <img id="btnDouble_expresso" src="image_machine/Vue1-assets/Bouton_Double_expresso_etat0.png">
+        <img id="btncafe_long" src="image_machine/Vue1-assets/Bouton_cafe_long_etat0.png">
+        <img id="btncappuccino" src="image_machine/Vue1-assets/Bouton_cappuccino_etat0.png">
+    </div>
+    <div id="boutonMonnaie">
+        <img id="boutonRetour" src="image_machine/Vue1-assets/Bouton_rendu_monnaie_etat0.png">
+        <img id="boutonPiece2" src="image_machine/Vue1-assets/Bouton_piece2_etat0.png">
+        <img id="boutonPiece1" src="image_machine/Vue1-assets/Bouton_piece1_etat0.png">
+        <img id="boutonPiece50" src="image_machine/Vue1-assets/Bouton_piece50_etat0.png">
+        <img id="boutonPiece20" src="image_machine/Vue1-assets/Bouton_piece20_etat0.png">
+        <img id="boutonPiece10" src="image_machine/Vue1-assets/Bouton_piece10_etat0.png">
+        <img id="boutonPiece5" src="image_machine/Vue1-assets/Bouton_piece5_etat0.png">
+    </div>
+    <div id="maintenance">
+        @if(Gate::allows('adminSuperAdmin'))
+            <a href="{{ url('/Accueil') }}"><img id="boutonMaintenance"
+                                                 src="image_machine/Vue1-assets/Manitenance_etat0.png"></a>
+        @elseif(Gate::allows('user'))
+            <a href="{{ url('/vente') }}"><img id="boutonMaintenance"
+                                               src="image_machine/Vue1-assets/Manitenance_etat0.png"></a>
+        @else
+            <a href="{{ url('login') }}"><img id="boutonMaintenance"
+                                              src="image_machine/Vue1-assets/Manitenance_etat0.png"></a>
+        @endif
+    </div>
+    <div id="boisson">
+        <img id="tasse" src="image_machine/Vue1-assets/tasse_vide.png">
+    </div>
+
 </div>
+
+
 </body>
 </html>
