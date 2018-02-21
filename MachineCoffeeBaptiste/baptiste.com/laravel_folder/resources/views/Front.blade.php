@@ -8,23 +8,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/scriptVue2.js"></script>
-    <script>
-        var stockSucre = {{$stockSucre}};
-        var boissons = {{$boissons}};
-        {{--var coins = {!! $coins->map(function($coin){--}}
-            {{--return [--}}
-                {{--'value' => $coin->type,--}}
-                {{--'nb' => 0,--}}
-            {{--];--}}
-        {{--})->toJson() !!};--}}
-        {{--var p = _.find(coins, { 'value': 100})--}}
-        {{--p.nb++;--}}
-        {{--console.log(_.find(coins, { 'value': 100}).nb);--}}
-
-    </script>
+    <script>stockSucre = {{$stockSucre}}</script>
 </head>
 <body>
 <div id="fond">
