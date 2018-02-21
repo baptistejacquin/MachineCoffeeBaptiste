@@ -85,7 +85,11 @@ Route::delete('suppLigne/{id}', 'ControllerRecette@suppligne')->name('suppLigne'
 
 
 
-Route::get('monnaie', 'ControllerMonnaie@mon')->middleware('auth');
+Route::get('monnaie', 'ControllerMonnaie@mon')->name('listePiece')->middleware('auth');
+
+Route::get('modifStock/{id}','ControllerMonnaie@edit')->name('editPiece')->middleware('auth');
+
+Route::put('modif/{id}','ControllerMonnaie@modif')->name('CoinModification')->middleware('auth');
 
 
 

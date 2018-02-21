@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Coin;
 use App\Recette;
 use Illuminate\Http\Request;
 use App\Vente;
@@ -27,7 +28,18 @@ class FrontController extends Controller
     {
         $boissons = Boisson::all();
         $nbSucres = Ingredient::where('nom', 'Sucre')->first();
-        return view('Front', ['boissons' => $boissons, 'nbSucres' => $nbSucres]);
+        $stockSucre = Ingredient::where('nom', 'Sucre')->first()->stock;
+        if ($stockSucre > 4 ){
+            $stockSucre = 4;
+        };
+        $coins = Coin::all();
+        // dd($coins);
+        return view('Front', [
+            'boissons' => $boissons,
+            'nbSucres' => $nbSucres,
+            'stockSucre' =>$stockSucre,
+            'coins' => $coins,
+        ]);
     }
 
     /**
@@ -56,7 +68,8 @@ class FrontController extends Controller
             }else{
                 $vente->user_id = 0;
             }
-            $vente->boisson_prix = $vente->boisson->prix;
+            $prix = Boisson::select('prix')->where('id',request('boisson'))->get()->first();
+            $vente->boisson_prix = $prix->prix;
             $vente->nbSucre = request('sucre');
             $vente->save();
 

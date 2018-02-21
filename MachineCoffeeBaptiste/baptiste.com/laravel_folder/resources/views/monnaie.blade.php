@@ -10,13 +10,12 @@
 
 @section('contenu')
     <table class="table-striped col-md-12 table-hover">
-        @foreach ($stockPieces as $key =>$table)
+        @foreach ($stockPieces as $stockPiece)
 
             <tr>
-                <td><h2>Pieces {{$table["value"]}} € </h2></td>
-                <td><h2>{{$table["stock"]}} qt </h2> <a href="#" class="btn btn-danger">-</a> <a href="#"
-                                                                                                 class="btn btn-success">+</a>
-                </td>
+                <td><h2>Pieces {{$stockPiece->type}} cts € </h2></td>
+                <td><h2>{{$stockPiece->stock}} qt </h2></td>
+                <td><a href="modifStock/{{$stockPiece->id}}" class="btn btn-success">Modifier Stock</a></td>
             </tr>
 
         @endforeach

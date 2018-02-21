@@ -11,14 +11,14 @@
         <select name="boisson" id="selectbasic" class="form-control">
             <option selected disabled value="Drink selection">Drink selection</option>
             @foreach ($boissons as $element)
-                <option value="{{ $element->id}}" label="{{ $element->nom}}"</option>
+                <option value="{{ $element->id}}" label="{{ $element->nom}}">{{ $element->nom}}</option>
             @endforeach
         </select><br>
 
         <select name="ingredient" id="selecting" class="form-control">
             <option selected disabled value="Ingredient selection">Ingredient selection</option>
             @foreach ($ingredients as $element)
-                <option value="{{ $element->id}}" label="{{ $element->nom}}"</option>
+                <option value="{{ $element->id}}" label="{{ $element->nom}}">{{ $element->nom}}</option>
             @endforeach
         </select><br>
 

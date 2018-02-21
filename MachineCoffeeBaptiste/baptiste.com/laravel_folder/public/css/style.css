@@ -6,6 +6,10 @@
 	margin-right: auto;
 }
 
+body{
+	background-color: #F1FFF6;
+}
+
 #boutonMaintenance{
 	position: relative;
 	top: -95px;
