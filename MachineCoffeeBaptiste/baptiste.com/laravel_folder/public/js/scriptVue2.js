@@ -111,20 +111,21 @@ function resetPiecesIntroduites() {
 let prix = 0;
 
 function prixBoisson(boisson) {
-
-    if (boisson === "Expresso") {
-        prix = 0.30;
+    {
+        if (boisson === "Expresso") {
+            prix = 0.30;
+        }
+        else if (boisson === "Double_expresso") {
+            prix = 0.60;
+        }
+        else if (boisson === "cafe_long") {
+            prix = 0.70;
+        }
+        else if (boisson === "cappuccino") {
+            prix = 0.60;
+        }
+        return prix;
     }
-    else if (boisson === "Double_expresso") {
-        prix = 0.60;
-    }
-    else if (boisson === "cafe_long") {
-        prix = 0.70;
-    }
-    else if (boisson === "cappuccino") {
-        prix = 0.60;
-    }
-    return prix;
 }
 
 //fonction permettant de retourner la monnaie 

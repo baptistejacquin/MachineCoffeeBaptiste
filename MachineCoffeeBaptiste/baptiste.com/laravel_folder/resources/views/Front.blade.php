@@ -13,15 +13,16 @@
     <script type="text/javascript" src="js/scriptVue2.js"></script>
     <script>
         var stockSucre = {{$stockSucre}};
-        var coins = {!! $coins->map(function($coin){
-            return [
-                'value' => $coin->type,
-                'nb' => 0,
-            ];
-        })->toJson() !!};
-        var p = _.find(coins, { 'value': 100})
-        p.nb++;
-        console.log(_.find(coins, { 'value': 100}).nb);
+        var boissons = {{$boissons}};
+        {{--var coins = {!! $coins->map(function($coin){--}}
+            {{--return [--}}
+                {{--'value' => $coin->type,--}}
+                {{--'nb' => 0,--}}
+            {{--];--}}
+        {{--})->toJson() !!};--}}
+        {{--var p = _.find(coins, { 'value': 100})--}}
+        {{--p.nb++;--}}
+        {{--console.log(_.find(coins, { 'value': 100}).nb);--}}
 
     </script>
 </head>
@@ -82,7 +83,7 @@
     </div>
 
 </div>
-<form  action="/" method="POST" name="Formulaire" id="formulaireVente">
+<form hidden action="/" method="POST" name="Formulaire" id="formulaireVente">
 {{ csrf_field() }}
 <!-- Form Name -->
     <br>

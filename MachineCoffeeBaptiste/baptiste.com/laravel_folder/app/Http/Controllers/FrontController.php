@@ -32,6 +32,7 @@ class FrontController extends Controller
         if ($stockSucre > 4 ){
             $stockSucre = 4;
         };
+        $boissons = Boisson::all();
         $coins = Coin::all();
         // dd($coins);
         return view('Front', [
@@ -39,6 +40,7 @@ class FrontController extends Controller
             'nbSucres' => $nbSucres,
             'stockSucre' =>$stockSucre,
             'coins' => $coins,
+            'boissons'=>$boissons,
         ]);
     }
 
