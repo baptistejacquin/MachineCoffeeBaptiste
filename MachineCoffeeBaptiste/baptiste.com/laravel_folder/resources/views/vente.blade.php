@@ -12,7 +12,7 @@
 
 
 @section('search')
-    @if(Gate::allows("adminSuperAdmin"))
+
     <div class="container">
         <div class="row">
             <a href="{{route('listeVente')}}" class="btn btn-info col-lg-1">Sans Tri</a>
@@ -31,7 +31,6 @@
             </div>
         </div>
     </div>
-    @endif
 @endsection
 
 @section('contenu')
@@ -62,7 +61,7 @@
                     <tbody>
                     <tr>
                         <td><h3>Vente n° {{$vente->id}}</h3></td>
-                        <td><h3>Boisson {{$vente->boisson->nom}}</h3></td>
+                        <td><h3>{{$vente->boisson->nom}}</h3></td>
                         <td><h3>Nb Sucre {{$vente->nbSucre}}</h3></td>
                         <td><h3>Prix {{$vente->boisson_prix}} cts</h3></td>
                         <td><h3>Client {{$vente->user->name}} </h3></td>

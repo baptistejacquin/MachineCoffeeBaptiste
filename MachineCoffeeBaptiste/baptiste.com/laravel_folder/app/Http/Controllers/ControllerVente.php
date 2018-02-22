@@ -34,16 +34,26 @@ class ControllerVente extends Controller
     {
         $idboisson = Boisson::select('id')->where('nom', request("searchVente"))->get()->first();
         $users = User::select('id')->where("name", request("searchVente"))->get()->first();
-        if ($idboisson) {
-            $ventes = Vente::where('boisson_id', $idboisson->id)->orderby("created_at", "DESC")->get();
-            return view('vente', compact('ventes'));
 
-        }else if ($users) {
-            $ventes = Vente::where('user_id', $users->id)->orderby("created_at", "DESC")->get();
-            return view('vente', compact('ventes'));
+        if(Gate::allows("adminSuperAdmin")) {
+            if ($idboisson) {
+                $ventes = Vente::where('boisson_id', $idboisson->id)->orderby("created_at", "DESC")->get();
+                return view('vente', compact('ventes'));
 
-        } else {
-            return redirect()->back()->with('error', "La rechercher ne correspond à rien");
+            } else if ($users) {
+                $ventes = Vente::where('user_id', $users->id)->orderby("created_at", "DESC")->get();
+                return view('vente', compact('ventes'));
+
+            } else {
+                return redirect()->back()->with('error', "La rechercher ne correspond à rien");
+            }
+        }elseif (Gate::allows("user")) {
+            if ($idboisson) {
+                $ventes = Vente::where('boisson_id', $idboisson->id)->where('user_id', Auth::user()->id)->orderby("created_at", "DESC")->get();
+                return view('vente', compact('ventes'));
+            }else {
+                return redirect()->back()->with('error', "La rechercher ne correspond à rien");
+            }
         }
     }
 }
